@@ -1,0 +1,44 @@
+@import '../../App.scss';
+
+.requests-table{
+  margin: 10px auto;
+  width: 100%;
+  tr{
+    color: white;
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 5px;
+  }
+  th{
+    background-color: #612940;
+    padding: 10px;
+    text-align: left;
+  }
+  .hide,.m-hide{
+    @include mediumMobile{
+      display: none;
+    }
+  }
+  .s-hide{
+    @include smallMobile{
+      display: none;
+    }
+  }
+  td{
+    color: darkslategray;
+    text-align: left;
+    padding: 10px;
+    font-weight: 300;   
+  }
+  tr:nth-child(even) {
+    background: #e8eeef;
+  }
+  tr:nth-child(odd) {
+    background: #afb3b4;
+  }
+  .more{
+    text-align: center;
+    .more-icon{
+        cursor: pointer;
+    }
+  }
+}

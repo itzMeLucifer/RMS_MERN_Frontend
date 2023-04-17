@@ -1,0 +1,23 @@
+.navbar{
+    height: 50px;
+    background-color: #612940;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    .logout{
+        border: none;
+        outline: none;
+        padding: 8px;
+        color: #612940;
+        background-color: white;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 20px;
+        border-radius: 5px;
+    }
+}

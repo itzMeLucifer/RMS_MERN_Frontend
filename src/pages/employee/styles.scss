@@ -1,0 +1,14 @@
+.tasks{
+    display: flex;
+    .task{
+        flex: 1;
+        text-align: center;
+        border: 2px solid #612940;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .active{
+        background-color: #612940;
+        color: white;
+    }
+}
