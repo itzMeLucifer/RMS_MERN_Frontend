@@ -11,7 +11,7 @@ function RequestTable({columns,data}) {
           <tr>
           {
             columns?.map((item) => (
-              <th className={['Request Id','Issue Type'].includes(item)?'ul-header hide':item === 'Submission Date'?'ul-header s-hide':item === 'Product Type'?'ul-header xs-hide':'ul-header'} key={item}>{item}</th>
+              <th className={['Issue Type'].includes(item)?'ul-header hide':item === 'Submission Date'?'ul-header s-hide':'ul-header'} key={item}>{item}</th>
             ))
           }
           </tr>

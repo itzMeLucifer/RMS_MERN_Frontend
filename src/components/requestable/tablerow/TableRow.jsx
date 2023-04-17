@@ -42,7 +42,6 @@ function TableRow({item}) {
 
     return (
       <tr>
-        <td className='m-hide'><b>{item._id}</b></td>
         <td>{user.username}</td>
         <td className='xs-hide'>{product.product}</td>
         <td className='m-hide'>{showIssue()}</td>

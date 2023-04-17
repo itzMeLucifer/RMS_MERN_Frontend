@@ -13,7 +13,7 @@ function Customer() {
   const [pendingRequests,setPendingRequests] =  useState([])
   const [closedRequests,setClosedRequests] =  useState([])
   const {requests,dispatchRequest} = useContext(RequestContext)
-  const customerColumns = ['Request Id',"Customer's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
+  const customerColumns = ["Customer's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
 
   useEffect(()=>{
     if(requests.length === 0){

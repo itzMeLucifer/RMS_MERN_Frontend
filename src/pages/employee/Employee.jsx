@@ -14,8 +14,8 @@ function Employee() {
   const lastPathValue = window.location.pathname.split('/')[2]
   const empType = JSON.parse(localStorage.getItem('user')).username
   
-  const allocatedTaskColumns = ['Request Id',"Employee's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
-  const unAllocatedTaskColumns = ['Request Id',"Customer's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
+  const allocatedTaskColumns = ["Employee's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
+  const unAllocatedTaskColumns = ["Customer's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
 
   useEffect(() => {
     if(selectedTasks === 0){
