@@ -50,7 +50,7 @@ function Request({open,setOpen,data,info}) {
                 }
                 {
                     userType === 'customer'?null:
-                    <button onClick={(e) =>  handleSubmitUpdatedRequest(e)}>Submit</button>
+                    <button onClick={(e) =>  handleSubmitUpdatedRequest(e)}>{info.status === 'Created'?'Assign':'Submit'}</button>
                 }
             </form> 
         </div>:

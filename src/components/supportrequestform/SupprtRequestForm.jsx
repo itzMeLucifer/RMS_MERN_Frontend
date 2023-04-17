@@ -40,10 +40,6 @@ function SupprtRequestForm({open,setOpen}) {
             setError('Please provide the issue types.')
             return
         }   
-        if(newRequest.desc === ''){
-            setError('Please provide the description.')
-            return
-        }
         setError('')
         axios.post(`${API_URL}/requests/create`,{...newRequest},config)
         .then(resolve => {

@@ -14,7 +14,8 @@ function Employee() {
   const lastPathValue = window.location.pathname.split('/')[2]
   const empType = JSON.parse(localStorage.getItem('user')).username
   
-  const customerColumns = ['Request Id','Username','Product Type','Issue Type','Submission Date','Status','View Details']
+  const allocatedTaskColumns = ['Request Id',"Employee's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
+  const unAllocatedTaskColumns = ['Request Id',"Customer's Username",'Product Type','Issue Type','Submission Date','Status','View Details']
 
   useEffect(() => {
     if(selectedTasks === 0){
@@ -60,7 +61,7 @@ function Employee() {
           <h2>My Tasks</h2>
         }
       </div>
-      <RequestTable columns={customerColumns} data={tasks}/>
+      <RequestTable columns={selectedTasks === 0?allocatedTaskColumns:unAllocatedTaskColumns} data={tasks}/>
     </div>
   )
 }
