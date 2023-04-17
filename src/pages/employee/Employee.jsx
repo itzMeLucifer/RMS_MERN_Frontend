@@ -61,7 +61,7 @@ function Employee() {
           <h2>My Tasks</h2>
         }
       </div>
-      <RequestTable columns={selectedTasks === 0?allocatedTaskColumns:unAllocatedTaskColumns} data={tasks}/>
+      <RequestTable columns={selectedTasks === 0 && empType === 'employee1'?allocatedTaskColumns:unAllocatedTaskColumns} data={tasks}/>
     </div>
   )
 }
