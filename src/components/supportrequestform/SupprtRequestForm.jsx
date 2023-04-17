@@ -66,7 +66,7 @@ function SupprtRequestForm({open,setOpen}) {
                       background: '#612940'
                     },
                     searchBox: {
-                        maxWidth:'350px',
+                        width:'100%',
                         padding:'10px',
                         border: '2px solid lightgray',
                         borderBottom: '2px solid lightgray',

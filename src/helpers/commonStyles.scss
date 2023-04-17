@@ -13,6 +13,9 @@
         @include mediumMobile{
             width: 90%;
         }
+        @include xsmallMobile{
+            width: 95%;
+        }
         background-color: white;
         border-radius: 25px;
         -webkit-box-shadow: 7px 7px 15px -8px rgba(0,0,0,0.75);
@@ -20,6 +23,9 @@
         box-shadow: 7px 7px 15px -8px rgba(0,0,0,0.75);
         display: flex;
         padding: 50px 40px;
+        @include xsmallMobile{
+            padding: 30px 15px;
+        }
         flex-direction: column;
         gap: 15px;
         color: darkslategray;

@@ -1,3 +1,8 @@
+@mixin xsmallMobile{
+    @media (max-width : 400px){
+        @content;
+    }
+}
 
 @mixin smallMobile{
     @media (max-width : 750px){

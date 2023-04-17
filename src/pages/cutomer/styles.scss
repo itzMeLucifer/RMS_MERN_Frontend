@@ -5,6 +5,9 @@
     @include mediumMobile{
         padding: 20px 20px;
     }
+    @include xsmallMobile{
+        padding: 20px 10px;
+    }
     position: relative;
     display: flex;
     flex-direction: column;

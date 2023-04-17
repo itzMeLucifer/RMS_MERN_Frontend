@@ -44,7 +44,7 @@ function TableRow({item}) {
       <tr>
         <td className='m-hide'><b>{item._id}</b></td>
         <td>{user.username}</td>
-        <td>{product.product}</td>
+        <td className='xs-hide'>{product.product}</td>
         <td className='m-hide'>{showIssue()}</td>
         <td className='s-hide'>{moment(item.createdAt).format('DD/ MM/ YYYY')}</td>
         <td>{item.status}</td>
