@@ -9,6 +9,7 @@ import {Multiselect} from 'multiselect-react-dropdown'
 function SupprtRequestForm({open,setOpen}) {    
     const [products,setProducts] =  useState([])
     const [issues,setIssues] =  useState([])
+    const [file,setFile] = useState(null)
     const [error,setError] = useState('')
     const request = useContext(RequestContext)
     const [newRequest,setNewRequest] = useState({
@@ -40,13 +41,29 @@ function SupprtRequestForm({open,setOpen}) {
             setError('Please provide the issue types.')
             return
         }   
+        if(file === null){
+            setError('Please provide the necessary documents.')
+            return
+        }
         setError('')
-        axios.post(`${API_URL}/requests/create`,{...newRequest},config)
+        let formData = new FormData();
+        for(const item in newRequest){
+            formData.append(item,newRequest[item])
+        }
+        if(file && newRequest.file)
+            formData.append('originalFile',file)
+        axios.post(`${API_URL}/requests/create`,formData,config)
         .then(resolve => {
             request.dispatchRequest({type:ADD_REQUEST,payload:resolve.data.request})
             setOpen(!open)
         })
         .catch(reject => setError(reject.response.data.msg))
+    }
+
+    const handleFileSelect = (e) => {
+        setError('')
+        setNewRequest({...newRequest,file:e.target.files[0].name})
+        setFile(e.target.files[0])
     }
 
     return (
@@ -82,7 +99,7 @@ function SupprtRequestForm({open,setOpen}) {
                     }}}
                 />
                 <textarea name="" className='textarea' placeholder='Please describe your issue.' onChange={(e) =>  setNewRequest({...newRequest,desc:e.target.value})}/>
-                <input type="file" accept='.pdf, .doc, .docx, .jpg, .png'/>
+                <input type="file" accept='.pdf, .doc, .docx, .jpg, .png' onChange={(e) => handleFileSelect(e)}/>
                 <div className="error">{error === ''?null:error}</div>
                 <button onClick ={(e) =>  handleSubmitNewRequest(e)}>Submit</button>
             </form> 
