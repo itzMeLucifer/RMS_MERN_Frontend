@@ -32,7 +32,19 @@ function SupprtRequestForm({open,setOpen}) {
     
     const handleSubmitNewRequest = (e) => {
         e.preventDefault()
-        console.log(newRequest)
+        if(newRequest.productType === ''){
+            setError('Please provide the product type.')
+            return
+        }
+        if(newRequest.issueType.length === 0){
+            setError('Please provide the issue types.')
+            return
+        }   
+        if(newRequest.desc === ''){
+            setError('Please provide the description.')
+            return
+        }
+        setError('')
         axios.post(`${API_URL}/requests/create`,{...newRequest},config)
         .then(resolve => {
             request.dispatchRequest({type:ADD_REQUEST,payload:resolve.data.request})
