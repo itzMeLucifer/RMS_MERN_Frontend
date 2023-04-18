@@ -68,6 +68,7 @@ function Login() {
       },500)
     })
     .catch(rej => {
+      setFetched('done')
       setUser({...user,error:rej.response.data.msg})
     })
   }
