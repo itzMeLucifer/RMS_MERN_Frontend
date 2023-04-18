@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react'
 import axios from 'axios'
 
-import {API_URL,config,UPDATE_REQUEST} from '../../constants'
+import {config,UPDATE_REQUEST} from '../../constants'
 import {RequestContext} from '../../context/requests'
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -16,7 +16,7 @@ function Request({open,setOpen,data,info}) {
         e.preventDefault()
         if(info.status === updatedRequest.status )
             return
-        axios.put(`${API_URL}/requests/update`,{...updatedRequest},config)
+        axios.put('/api/requests/update',{...updatedRequest},config)
         .then(res => {
             dispatchRequest({type:UPDATE_REQUEST,payload:res.data})
             setOpen(!open)

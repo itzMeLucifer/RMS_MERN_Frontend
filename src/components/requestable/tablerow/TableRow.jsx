@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import moment from 'moment'
-import {API_URL, config} from '../../../constants'
+import {config} from '../../../constants'
 import axios from 'axios'
 
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -13,14 +13,14 @@ function TableRow({item}) {
 
     useEffect(()=>{
         if(JSON.parse(localStorage.getItem('user')).username === 'employee1'){
-          axios.get(`${API_URL}/requests/get/admin/${item._id}`,config)
+          axios.get(`/api/requests/get/admin/${item._id}`,config)
           .then(resolve => {
               setUser(resolve.data.user)
               setProduct(resolve.data.product)
           })   
           return
         }    
-        axios.get(`${API_URL}/requests/get/${item._id}`,config)
+        axios.get(`/api/requests/get/${item._id}`,config)
         .then(resolve => {
             setUser(resolve.data.user)
             setProduct(resolve.data.product)

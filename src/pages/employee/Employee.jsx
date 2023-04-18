@@ -1,7 +1,7 @@
 import React,{useState,useEffect, useContext} from 'react'
 import './styles.scss'
 import axios from 'axios'
-import {API_URL,config,GET_REQUESTS} from '../../constants'
+import {config,GET_REQUESTS} from '../../constants'
 import { RequestContext } from '../../context/requests'
 
 import RequestTable from '../../components/requestable/RequestTable'
@@ -32,14 +32,14 @@ function Employee() {
   useEffect(()=>{
     if(requests.length === 0){
       if(empType === 'employee1'){
-        axios.get(`${API_URL}/requests/getallrequests`,config)
+        axios.get('/api/requests/getallrequests',config)
         .then(resolve => {
           if(resolve.data.requests.length !== 0)
             dispatchRequest({type:GET_REQUESTS,payload:resolve.data.requests})
         })
       }
       else if(empType === 'employee2'){
-        axios.get(`${API_URL}/requests/getemployeerequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
+        axios.get(`/api/requests/getemployeerequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
         .then(resolve => {
           if(resolve.data.requests.length !== 0){
             dispatchRequest({type:GET_REQUESTS,payload:resolve.data.requests})

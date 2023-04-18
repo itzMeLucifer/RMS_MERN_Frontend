@@ -4,7 +4,6 @@ import axios from 'axios'
 
 import { useNavigate } from 'react-router-dom';
 import { sharedHelper } from '../../helpers/sharedHelper';
-import {API_URL} from '../../constants'
 
 import Loader from '../../components/loader/Loader';
 
@@ -48,7 +47,7 @@ function Login() {
     }
     setLoading(true)
     setFetched('start')
-    axios.post(`${API_URL}/login`,{...user})
+    axios.post('/api/login',{...user})
     .then(res =>{
       localStorage.setItem("authToken", res.data.token);
       localStorage.setItem("user",JSON.stringify(res.data.user));
