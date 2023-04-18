@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { sharedHelper } from '../../helpers/sharedHelper';
 import {API_URL} from '../../constants'
 
+import Loader from '../../components/loader/Loader';
+
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
@@ -13,6 +15,8 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 function Login() {
   const [showPassword,setShowPassword] = useState(false)
+  const [loading,setLoading] = useState(false)
+  const [fetched,setFetched] = useState(false)
   const [user,setUser] = useState({
     username:'',
     password:'',
@@ -29,6 +33,12 @@ function Login() {
       navigate(1)
     }
  }, [])
+ 
+ useEffect(()=>{
+   if(fetched === 'done'){
+     setLoading(false)
+   }
+ },[fetched])
 
   const handleLogin = async(e) =>{
     e.preventDefault()
@@ -36,11 +46,14 @@ function Login() {
       setUser({...user,error:'Please fill all the details.'})
       return
     }
+    setLoading(true)
+    setFetched('start')
     axios.post(`${API_URL}/login`,{...user})
     .then(res =>{
       localStorage.setItem("authToken", res.data.token);
       localStorage.setItem("user",JSON.stringify(res.data.user));
       setUser({...user,success:res.data.msg})
+      setFetched('done')
       setTimeout(()=>{
         if(res.data.user.username === 'employee1'){
           window.location.assign('/user/admin')
@@ -81,6 +94,9 @@ function Login() {
           </div>
         <button onClick={(e) => handleLogin(e)}>Login</button>
       </form>
+      {
+        loading?<Loader/>:null
+      }
     </div>
   )
 }

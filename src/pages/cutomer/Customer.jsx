@@ -34,14 +34,14 @@ function Customer() {
   return (
     <div className='custom-container'>
       <button onClick={() => setOpenModal(!openModal)} className='submit'>New Request</button>
-      <div className="pending">
-        <h2>Pending Requests</h2>
-        <RequestTable columns={customerColumns} data={pendingRequests}/>
-      </div>
-      <div className="pending">
-        <h2>Request History</h2>
-        <RequestTable columns={customerColumns} data={closedRequests}/>
-      </div>
+          <div className="pending">
+            <h2>Pending Requests</h2>
+            <RequestTable columns={customerColumns} data={pendingRequests}/>
+          </div>
+          <div className="pending">
+            <h2>Request History</h2>
+            <RequestTable columns={customerColumns} data={closedRequests}/>
+          </div>
       {
         openModal?
         <SupprtRequestForm open={openModal} setOpen={setOpenModal}/>:null
