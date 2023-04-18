@@ -11,6 +11,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
+import {API_URL} from '../../constants'
+
 
 function Login() {
   const [showPassword,setShowPassword] = useState(false)
@@ -47,7 +49,7 @@ function Login() {
     }
     setLoading(true)
     setFetched('start')
-    axios.post('/api/login',{...user})
+    axios.post(`${API_URL}/login`,{...user})
     .then(res =>{
       localStorage.setItem("authToken", res.data.token);
       localStorage.setItem("user",JSON.stringify(res.data.user));

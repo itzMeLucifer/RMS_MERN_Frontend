@@ -3,7 +3,7 @@ import './styles.scss'
 import axios from 'axios'
 
 import {RequestContext} from '../../context/requests'
-import {GET_REQUESTS,config} from '../../constants'
+import {GET_REQUESTS,API_URL,config} from '../../constants'
 
 import SupprtRequestForm from '../../components/supportrequestform/SupprtRequestForm'
 import RequestTable from '../../components/requestable/RequestTable'
@@ -17,7 +17,7 @@ function Customer() {
 
   useEffect(()=>{
     if(requests.length === 0){
-      axios.get(`/api/requests/getmyrequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
+      axios.get(`${API_URL}/requests/getmyrequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
       .then(resolve => {
         if(resolve.data.requests.length !== 0)
           dispatchRequest({type:GET_REQUESTS,payload:resolve.data.requests})

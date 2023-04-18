@@ -3,7 +3,7 @@ import './styles.scss'
 import axios from 'axios'
 import CloseIcon from '@mui/icons-material/Close';
 import {RequestContext} from '../../context/requests'
-import {ADD_REQUEST, config} from '../../constants'
+import {ADD_REQUEST, API_URL,config} from '../../constants'
 import {Multiselect} from 'multiselect-react-dropdown' 
 
 function SupprtRequestForm({open,setOpen}) {    
@@ -21,13 +21,13 @@ function SupprtRequestForm({open,setOpen}) {
     })
 
     useEffect(()=> {
-        axios.get('/api/products',config)
+        axios.get(`${API_URL}/products`,config)
         .then(resolve => setProducts(resolve.data))
     },[])
     
     const handleFetchIssues = (e) => {
         setNewRequest({...newRequest,productType:e.target.value})
-        axios.get(`/api/issues/${e.target.value}`,config)
+        axios.get(`${API_URL}/issues/${e.target.value}`,config)
         .then(resolve => setIssues(resolve.data.issues))
     }
     
@@ -52,7 +52,7 @@ function SupprtRequestForm({open,setOpen}) {
         }
         if(file && newRequest.file)
             formData.append('originalFile',file)
-        axios.post(`/api/requests/create`,formData,config)
+        axios.post(`${API_URL}/requests/create`,formData,config)
         .then(resolve => {
             request.dispatchRequest({type:ADD_REQUEST,payload:resolve.data.request})
             setOpen(!open)
