@@ -17,7 +17,7 @@ function Customer() {
 
   useEffect(()=>{
     if(requests.length === 0){
-      axios.get(`${API_URL}/requests/getmyrequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
+      axios.get(`${API_URL}/api/requests/getmyrequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
       .then(resolve => {
         if(resolve.data.requests.length !== 0)
           dispatchRequest({type:GET_REQUESTS,payload:resolve.data.requests})

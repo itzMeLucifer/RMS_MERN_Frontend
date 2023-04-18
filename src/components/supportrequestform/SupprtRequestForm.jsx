@@ -21,13 +21,13 @@ function SupprtRequestForm({open,setOpen}) {
     })
 
     useEffect(()=> {
-        axios.get(`${API_URL}/products`,config)
+        axios.get(`${API_URL}/api/products`,config)
         .then(resolve => setProducts(resolve.data))
     },[])
     
     const handleFetchIssues = (e) => {
         setNewRequest({...newRequest,productType:e.target.value})
-        axios.get(`${API_URL}/issues/${e.target.value}`,config)
+        axios.get(`${API_URL}/api/issues/${e.target.value}`,config)
         .then(resolve => setIssues(resolve.data.issues))
     }
     
@@ -52,7 +52,7 @@ function SupprtRequestForm({open,setOpen}) {
         }
         if(file && newRequest.file)
             formData.append('originalFile',file)
-        axios.post(`${API_URL}/requests/create`,formData,config)
+        axios.post(`${API_URL}/api/requests/create`,formData,config)
         .then(resolve => {
             request.dispatchRequest({type:ADD_REQUEST,payload:resolve.data.request})
             setOpen(!open)

@@ -32,14 +32,14 @@ function Employee() {
   useEffect(()=>{
     if(requests.length === 0){
       if(empType === 'employee1'){
-        axios.get(`${API_URL}/requests/getallrequests`,config)
+        axios.get(`${API_URL}/api/requests/getallrequests`,config)
         .then(resolve => {
           if(resolve.data.requests.length !== 0)
             dispatchRequest({type:GET_REQUESTS,payload:resolve.data.requests})
         })
       }
       else if(empType === 'employee2'){
-        axios.get(`${API_URL}/requests/getemployeerequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
+        axios.get(`${API_URL}/api/requests/getemployeerequests/${JSON.parse(localStorage.getItem('user')).id}`,config)
         .then(resolve => {
           if(resolve.data.requests.length !== 0){
             dispatchRequest({type:GET_REQUESTS,payload:resolve.data.requests})

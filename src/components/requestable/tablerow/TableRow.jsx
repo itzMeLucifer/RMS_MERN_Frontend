@@ -13,14 +13,14 @@ function TableRow({item}) {
 
     useEffect(()=>{
         if(JSON.parse(localStorage.getItem('user')).username === 'employee1'){
-          axios.get(`${API_URL}/requests/get/admin/${item._id}`,config)
+          axios.get(`${API_URL}/api/requests/get/admin/${item._id}`,config)
           .then(resolve => {
               setUser(resolve.data.user)
               setProduct(resolve.data.product)
           })   
           return
         }    
-        axios.get(`${API_URL}/requests/get/${item._id}`,config)
+        axios.get(`${API_URL}/api/requests/get/${item._id}`,config)
         .then(resolve => {
             setUser(resolve.data.user)
             setProduct(resolve.data.product)

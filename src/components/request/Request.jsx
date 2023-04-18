@@ -16,7 +16,7 @@ function Request({open,setOpen,data,info}) {
         e.preventDefault()
         if(info.status === updatedRequest.status )
             return
-        axios.put(`${API_URL}/requests/update`,{...updatedRequest},config)
+        axios.put(`${API_URL}/api/requests/update`,{...updatedRequest},config)
         .then(res => {
             dispatchRequest({type:UPDATE_REQUEST,payload:res.data})
             setOpen(!open)
