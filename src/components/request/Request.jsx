@@ -38,8 +38,8 @@ function Request({open,setOpen,data,info}) {
                     userType === 'employee1' && request.status === 'Created'?
                     <select className='select' onChange={(e) => setUpdatedRequest({...updatedRequest,supportPersonId:e.target.value,status:'Open'})}>
                         <option value={null}>Selet Employee</option>
-                        <option value='643acfae06c87233e4e99a69'>Employee1</option>
-                        <option value='643acff906c87233e4e99a6a'>Employee2</option>
+                        <option value='6445e07d6d6c672b6885d244'>Employee1</option>
+                        <option value='6445e0c16d6c672b6885d245'>Employee2</option>
                     </select>:
                     <select className='select' onChange={(e) => setUpdatedRequest({...updatedRequest,status:e.target.value})}>
                         <option value={null}>Change Status</option>
